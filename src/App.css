@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@font-face {
+    font-family: 'WickedMouse';
+    src: url('/fonts/WickedMouse.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
