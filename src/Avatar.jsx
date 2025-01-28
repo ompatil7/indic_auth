@@ -56,7 +56,7 @@ function AvatarModel({ scale = 1, setFeedback }) {
   useEffect(() => {
     const loader = new FBXLoader();
     const animationFiles = {
-      idle: '/animations/idle.fbx',
+      idle: '/animations/Idle.fbx',
       talking: '/animations/talk1.fbx',
       clapping: '/animations/clap.fbx',
       bow: '/animations/bow.fbx',

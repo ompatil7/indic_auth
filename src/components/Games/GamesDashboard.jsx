@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import { levels } from "./levels";
-import LevelCard from "./LevelCard";
-import { Link } from "react-router-dom";
-import { UserIcon, GiftIcon, Trophy, Star, Crown } from 'lucide-react';
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import { UserIcon, GiftIcon, Trophy, Star, Crown } from 'lucide-react';
+ // Import useNavigate for navigation
 import {
   Sheet,
   SheetContent,
@@ -12,30 +10,66 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const HomePage = () => {
-  const navigate = useNavigate();
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isRewardsOpen, setIsRewardsOpen] = useState(false);
 
-  const handleLevelSelect = (level) => {
-    navigate(`/lesson/${level.id}`, { state: { levelFile: level.file } });
-  };
+const games = [
+  {
+    name: "Frog Jump",
+    description: "Help the frog jump to the correct vowel platform!",
+    route: "frog",
+    image: "🐸",
+  },
+  {
+    name: "Fill in the Blanks",
+    description: "Complete the sentence by filling in the blanks!",
+    route: "fillintheblanks",
+    image: "📝",
+  },
+  {
+    name: "Match the Pairs",
+    description: "Find and match the correct pairs of cards!",
+    route: "match",
+    image: "🃏",
+  },
+  {
+    name: "Avatar Actions",
+    description: "Control the avatar and perform actions!",
+    route: "home",
+    image: "🧍",
+  },
+  {
+    name: "Sentence Builder",
+    description: "Arrange the words to build a meaningful sentence!",
+    route: "sentence",
+    image: "🔤",
+  },
+  {
+    name: "Flipped Card",
+    description: "Flip and match the cards!",
+    route: "flippedcard",
+    image: "🃏",
+  },
+];
+
+const GamesDashboard = () => {
+  const navigate = useNavigate();
+  // const navigate = useNavigate();
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
+    const [isRewardsOpen, setIsRewardsOpen] = useState(false); // Initialize navigate function
 
   return (
-    <div className="bg-white min-h-screen">
-      {/* Header */}
+    <div className="min-h-screen bg-gradient-to-b from-purple-500 via-purple-300 to-white p-8 flex items-center justify-center">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
-            <Link to="/" className="-m-1.5 p-1.5">
+            <Link to="/home" className="-m-1.5 p-1.5">
               <h1 className="text-3xl font-bold text-gray-900" style={{ fontFamily: "WickedMouse, cursive" }}>
                 INDIC
               </h1>
             </Link>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link to="/games" className="text-sm font-semibold text-gray-900">
-              Games
+            <Link to="/home" className="text-sm font-semibold text-gray-900">
+              Home
             </Link>
             <Link to="/" className="text-sm font-semibold text-gray-900">
               Stories
@@ -146,15 +180,15 @@ const HomePage = () => {
                     {/* Stats */}
                     <div className="grid grid-cols-3 gap-4">
                       <div className="bg-gray-50 p-4 rounded-lg text-center">
-                        <div className="text-2xl text-gray-500 font-bold">12</div>
+                        <div className="text-2xl font-bold">12</div>
                         <div className="text-sm text-gray-500">Lessons</div>
                       </div>
                       <div className="bg-gray-50 p-4 rounded-lg text-center">
-                        <div className="text-2xl text-gray-500 font-bold">85%</div>
+                        <div className="text-2xl font-bold">85%</div>
                         <div className="text-sm text-gray-500">Accuracy</div>
                       </div>
                       <div className="bg-gray-50 p-4 rounded-lg text-center">
-                        <div className="text-2xl text-gray-500 font-bold">24</div>
+                        <div className="text-2xl font-bold">24</div>
                         <div className="text-sm text-gray-500">Streak</div>
                       </div>
                     </div>
@@ -162,10 +196,10 @@ const HomePage = () => {
                     {/* Recent Activity */}
                     <div>
                       <h4 className="text-sm font-medium mb-3">Recent Activity</h4>
-                      <div className="space-y-3 ">
+                      <div className="space-y-3">
                         {['Completed Lesson 3', 'Earned New Badge', 'Started Lesson 4'].map((activity, index) => (
-                          <div key={index} className="flex  items-center justify-between p-3 bg-gray-50 rounded-lg">
-                            <span className="text-sm text-gray-500">{activity}</span>
+                          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <span className="text-sm text-white">{activity}</span>
                             <span className="text-xs text-gray-500">2h ago</span>
                           </div>
                         ))}
@@ -179,43 +213,35 @@ const HomePage = () => {
         </nav>
       </header>
 
-      {/* Background Gradient */}
-      <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-          />
-        </div>
-
-        {/* Main Content */}
-        <div className="flex min-h-screen items-center justify-center pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15 max-w-6xl mx-auto justify-items-center">
-          {levels.map((level, index) => (
+      {/* Centered Content */}
+      <div className="flex flex-col items-center justify-center w-full pt-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          {games.map((game, index) => (
             <div
-              key={level.id}
-              className={`w-80 h-80 bg-white rounded-lg shadow-md flex items-center justify-center ${
-                index === levels.length - 1 && levels.length % 3 === 1
-                  ? "lg:col-start-2"
-                  : index === levels.length - 1 && levels.length % 3 === 2
-                  ? "lg:col-start-2 lg:col-span-2"
-                  : ""
-              }`}
+              key={index}
+              className="relative bg-white shadow-lg rounded-2xl p-5 hover:shadow-2xl transition-transform transform hover:scale-110 cursor-pointer flex flex-col items-center text-center"
+              onClick={() => navigate(`/${game.route}`)} // Navigate to the route on card click
             >
-              <LevelCard level={level} onSelect={handleLevelSelect} />
+              <div className="flex items-center justify-center mb-4 text-7xl h-24 w-24 bg-purple-100 rounded-full">
+                {game.image}
+              </div>
+              <h2 className="text-xl font-bold text-purple-700 mb-2">{game.name}</h2>
+              <p className="text-gray-600 text-sm mb-4">{game.description}</p>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent the parent card click event
+                  navigate(`/${game.route}`);
+                }}
+                className="px-6 py-2 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition-all"
+              >
+                Play Now
+              </button>
             </div>
           ))}
         </div>
-      </div>
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default GamesDashboard;

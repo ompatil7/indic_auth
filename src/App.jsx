@@ -8,6 +8,11 @@ import HomePage from './HomePage'
 import FlippedCard from './FlippedCard'
 import { SpeechProvider } from './Avatar'
 import LessonPage from './LessonPage';
+import GamesDashboard from './components/Games/GamesDashboard'
+import FillInTheBlanks from './components/Games/FillInTheBlanks'
+import Frog from './components/Games/Frog'
+import Game from './components/Games/Match'
+import Sentence from './components/Games/Sentence'
 import './App.css'
 
 function App() {
@@ -19,8 +24,13 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/games" element={<GamesDashboard />} />
         <Route path="/lesson/:levelId" element={<LessonPage />} />
-        <Route path="/card" element={<FlippedCard />} />
+        <Route path="/flippedcard" element={<FlippedCard />} />
+        <Route path="/fillintheblanks" element={<FillInTheBlanks/>} />
+        <Route path="/frog" element={<Frog/>} />
+        <Route path="/match" element={<Game/>} />
+        <Route path="/sentence" element={<Sentence/>} />
       </Routes>
       </SpeechProvider>
     </Router>

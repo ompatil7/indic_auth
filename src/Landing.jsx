@@ -33,17 +33,20 @@ const Landing = () => {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link to="/card" className="text-sm font-semibold text-gray-900">
+            <Link to="/login" className="text-sm font-semibold text-gray-900">
               Games
             </Link>
-            <Link to="/" className="text-sm font-semibold text-gray-900">
+            <Link to="/login" className="text-sm font-semibold text-gray-900">
               Stories
             </Link>
-            <Link to="/" className="text-sm font-semibold text-gray-900">
-              Learning
+            <Link to="/login" className="text-sm font-semibold text-gray-900">
+              Learnings
             </Link>
-            <Link to="/" className="text-sm font-semibold text-gray-900">
+            <Link to="/login" className="text-sm font-semibold text-gray-900">
               AR
+            </Link>
+            <Link to="/login" className="text-sm font-semibold text-gray-900">
+              About Us
             </Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-x-9">
@@ -81,7 +84,7 @@ const Landing = () => {
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Explore the World of WickedMouse{" "}
+              Explore the World of INDIC{" "}
               <a href="#" className="font-semibold text-indigo-600">
                 <span className="absolute inset-0" aria-hidden="true"></span>Learn More{" "}
                 <span aria-hidden="true">&rarr;</span>
